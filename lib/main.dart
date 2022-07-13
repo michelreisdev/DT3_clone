@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:dt3/screem/MyHomePage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +17,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData( 
-        appBarTheme: const AppBarTheme(
-          color: Colors.white,
-          elevation: 0
-        )
-      ),
-      home:  SafeArea(child:  MyHomePage()),
+      theme: ThemeData(
+          textTheme: GoogleFonts.interTextTheme(
+            Theme.of(context).textTheme, 
+          ),
+          appBarTheme: const AppBarTheme(color: Colors.white, elevation: 0)),
+      home: SafeArea(child: MyHomePage()),
     );
   }
 }

@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'components/BottomNavigationBarHome.dart';
 import 'components/Carousel.dart';
 import 'components/DrawerHome.dart';
+import 'home/components/AcessoBlogDt3.dart';
+import 'home/components/SessionButtonCard.dart';
+import 'home/components/SessionButtonCardSeriesHome.dart';
 
 final List<String> imgList = [
   'https://d3ugyf2ht6aenh.cloudfront.net/stores/002/007/282/themes/amazonas/1-slide-1648839381074-6844273054-889ae767077db2f6fd2d594ba007a06e1648839385-1920-1920.webp?116628591',
@@ -83,7 +86,7 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
           Expanded(
-              child: ListView(
+            child: ListView(
             children: [
               Container(
                 height: 130,
@@ -116,14 +119,36 @@ class MyHomePage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
                   child: Text(
-                    "Veja o que falam da nossa loja",
+                    "Linhas",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               Container(
-                child: Text(''),
+                child: SessionButtonCard(),
               ),
+              Container(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
+                  child: Text(
+                    "Series",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                child: SessionButtonCardSeriesHome(),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child: AcessoBlogDt3(),
+              ),
+              SizedBox(
+                height: 220,
+              )
             ],
           ))
         ],

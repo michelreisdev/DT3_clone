@@ -59,11 +59,11 @@ class _CarouselHomeState extends State<CarouselHome> {
             return ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(3)),
               child: Container(
-                  decoration: BoxDecoration(
+                  /* decoration: BoxDecoration(
                     border: Border.all(
                       width: 3, color: Color.fromARGB(41, 187, 188, 187)
                     ),
-                  ),
+                  ), */
                   child: CardProduct(e['url'], e['valor'], e['nome'])),
             );
           }).toList(),

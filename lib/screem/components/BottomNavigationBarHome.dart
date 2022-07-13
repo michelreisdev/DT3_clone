@@ -23,7 +23,7 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
     onItemSelected: (index) => setState(() => _currentIndex = index),
     items: <BottomNavyBarItem>[
       BottomNavyBarItem(
-        icon: Icon(Icons.apps),
+        icon: Icon(Icons.home),
         title: Text('Home'),
         activeColor: Colors.green,
         inactiveColor: _inactiveColor,
