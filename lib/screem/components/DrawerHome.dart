@@ -1,7 +1,5 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
+import '../../common/custom_drawer/custom_drawer_header.dart';
 
 class DrawerHome extends StatefulWidget {
   const DrawerHome({Key? key}) : super(key: key);
@@ -11,59 +9,40 @@ class DrawerHome extends StatefulWidget {
 }
 
 class _DrawerHomeState extends State<DrawerHome> {
+  bool _customTileExpanded = false;
   @override
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: Colors.white,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.white,
-            ),
-            child: Container(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Icons.supervised_user_circle_rounded,
-                      size: 58,
+      child: Container(
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  DrawerHeaderCommon(),
+                  ExpansionTile(
+                    title: const Text('ExpansionTile 2'),
+                    subtitle: const Text('Custom expansion arrow icon'),
+                    trailing: Icon(
+                      _customTileExpanded
+                          ? Icons.arrow_drop_down_circle
+                          : Icons.arrow_drop_down,
                     ),
-                    Text(
-                      "Seja bem-vindo, click aqui para fazer login",
-                      style: TextStyle(fontSize: 12),
-                    )
-                  ],
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(1),
-            child: ListTile(
-              title: const Text('Home'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
+                    children: const <Widget>[
+                      ListTile(title: Text('This is tile number 2')),
+                    ],
+                    onExpansionChanged: (bool expanded) {
+                      setState(() => _customTileExpanded = expanded);
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-           Padding(
-             padding: const EdgeInsets.all(1),
-             child: ListTile(
-              title: const Text('Home'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-          ),
-           ),
-        ],
+            Container(child: Text("tes"))
+          ],
+        ),
       ),
     );
   }
