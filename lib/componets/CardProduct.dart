@@ -12,7 +12,7 @@ class CardProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 250,
-      height: 300,
+      height: 500,
       child: Card(
         elevation: 4,
         child: Stack(
@@ -27,116 +27,114 @@ class CardProduct extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                  height: 104,
+                  height: 109,
                   width: 300,
                   color: Color.fromARGB(190, 255, 255, 255),
-                  child: Container(
-                    child: Column(children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Container(
-                              decoration: BoxDecoration(
+                  child: Column(children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              border: Border.all(
                                 color: Colors.black,
-                                border: Border.all(
-                                  color: Colors.black,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(12),
+                                width: 1,
                               ),
-                              width: 18,
-                              height: 18,
+                              borderRadius: BorderRadius.circular(12),
                             ),
+                            width: 18,
+                            height: 18,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                border: Border.all(
-                                  color: Colors.black,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(12),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 1,
                               ),
-                              width: 18,
-                              height: 18,
+                              borderRadius: BorderRadius.circular(12),
                             ),
+                            width: 18,
+                            height: 18,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.blue[900],
-                                border: Border.all(
-                                  color: Colors.black,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(12),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue[900],
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 1,
                               ),
-                              width: 18,
-                              height: 18,
+                              borderRadius: BorderRadius.circular(12),
                             ),
-                          )
-                        ],
-                      ),
-                      Container(
-                        child: Column(children: [
-                          Container(
-                            alignment: Alignment.topCenter,
-                            child: Text(
-                              nome,
+                            width: 18,
+                            height: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      child: Column(children: [
+                        Container(
+                          alignment: Alignment.topCenter,
+                          child: Text(
+                            nome,
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Container(
+                          child: Text("R\$ ${preco}",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red)),
+                        ),
+                        Container(
+                          child: RichText(
+                            text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: '10',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                TextSpan(text: 'X de'),
+                                TextSpan(
+                                    text: "R\$ ${preco}",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                TextSpan(text: ' sem juros'),
+                              ],
                             ),
                           ),
-                          Container(
-                            child: Text("R\$ ${preco}",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red)),
-                          ),
-                          Container(
-                            child: RichText(
-                              text: TextSpan(
-                                style: DefaultTextStyle.of(context).style,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                      text: '10',
-                                      style:
-                                          TextStyle(fontWeight: FontWeight.bold)),
-                                  TextSpan(text: 'X de'),
-                                  TextSpan(
-                                      text: "R\$ ${preco}",
-                                      style:
-                                          TextStyle(fontWeight: FontWeight.bold)),
-                                  TextSpan(text: ' sem juros'),
-                                ],
-                              ),
+                        ),
+                        Container(
+                          child: RichText(
+                            text: TextSpan(
+                              style: DefaultTextStyle.of(context).style,
+                              children: const <TextSpan>[
+                                TextSpan(
+                                    text:
+                                        'ou R\$1.859,91 à vista (PIX ou Boleto)',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                              ],
                             ),
                           ),
-                          Container(
-                            child: RichText(
-                              text: TextSpan(
-                                style: DefaultTextStyle.of(context).style,
-                                children: const <TextSpan>[
-                                  TextSpan(
-                                      text:
-                                          'ou R\$1.859,91 à vista (PIX ou Boleto)',
-                                      style:
-                                          TextStyle(fontWeight: FontWeight.bold)),
-                                ],
-                              ),
-                            ),
-                          )
-                        ]),
-                      )
-                    ]),
-                  )),
+                        )
+                      ]),
+                    )
+                  ])),
             )
           ],
         ),

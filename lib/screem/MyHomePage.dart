@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'components/BottomNavigationBarHome.dart';
 import 'components/Carousel.dart';
 import 'components/DrawerHome.dart';
+import 'components/Duvidadas.dart';
+import 'components/Newsletter.dart';
 import 'home/components/AcessoBlogDt3.dart';
 import 'home/components/SessionButtonCard.dart';
 import 'home/components/SessionButtonCardSeriesHome.dart';
@@ -21,7 +23,6 @@ class MyHomePage extends StatelessWidget {
   final List<Widget> imageSliders = imgList
       .map(
         (item) => Container(
-          alignment: Alignment.topCenter,
           child: Image.network(
             item,
             fit: BoxFit.contain,
@@ -86,13 +87,12 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: ListView(
+              child: ListView(
             children: [
               Container(
-                height: 130,
+                constraints: BoxConstraints(maxHeight: 135),
                 child: CarouselSlider(
                     options: CarouselOptions(
-                      height: 250,
                       viewportFraction: 1,
                       enlargeCenterPage: true,
                       enableInfiniteScroll: true,
@@ -146,9 +146,12 @@ class MyHomePage extends StatelessWidget {
               Container(
                 child: AcessoBlogDt3(),
               ),
-              SizedBox(
-                height: 220,
-              )
+              Container(
+                child: Duvidadas(),
+              ),
+              Container(
+                child: Newsletter(),
+              ),
             ],
           ))
         ],

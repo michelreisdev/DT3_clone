@@ -68,6 +68,7 @@ class _CarouselHomeState extends State<CarouselHome> {
             );
           }).toList(),
         ),
+        SizedBox(height: 5,),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: imgList.asMap().entries.map((entry) {
