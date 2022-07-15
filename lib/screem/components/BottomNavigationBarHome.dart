@@ -11,6 +11,7 @@ class BottomNavigationBarHome extends StatefulWidget {
 class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
   int _currentIndex = 0;
   final _inactiveColor = Colors.grey;
+  final _corFundo = Color.fromARGB(255, 249, 19, 3);
   @override
   Widget build(BuildContext context) {
     return CustomAnimatedBottomBar(
@@ -25,14 +26,14 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
       BottomNavyBarItem(
         icon: Icon(Icons.home),
         title: Text('Home'),
-        activeColor: Colors.green,
+        activeColor: _corFundo,
         inactiveColor: _inactiveColor,
         textAlign: TextAlign.center,
       ),
       BottomNavyBarItem(
         icon: Icon(Icons.view_comfortable_sharp),
         title: Text('Produtos'),
-        activeColor: Colors.green,
+        activeColor: _corFundo,
         inactiveColor: _inactiveColor,
         textAlign: TextAlign.center,
       ),
@@ -41,14 +42,14 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
         title: Text(
           'Busca ',
         ),
-        activeColor: Colors.green,
+        activeColor: _corFundo,
         inactiveColor: _inactiveColor,
         textAlign: TextAlign.center,
       ),
       BottomNavyBarItem(
         icon: Icon(Icons.shopping_cart_outlined),
         title: Text('Carrinho'),
-        activeColor: Colors.green,
+        activeColor: _corFundo,
         inactiveColor: _inactiveColor,
         textAlign: TextAlign.center,
       ),

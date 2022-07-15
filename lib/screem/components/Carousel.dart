@@ -43,32 +43,28 @@ class _CarouselHomeState extends State<CarouselHome> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CarouselSlider(
-          carouselController: _controller,
-          options: CarouselOptions(
-              height: 300,
-              autoPlay: true,
-              enlargeCenterPage: true,
-              aspectRatio: 2.0,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  _current = index;
-                });
-              }),
-          items: imgList.map((e) {
-            return ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(3)),
-              child: Container(
-                  /* decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 3, color: Color.fromARGB(41, 187, 188, 187)
-                    ),
-                  ), */
-                  child: CardProduct(e['url'], e['valor'], e['nome'])),
-            );
-          }).toList(),
+        Container(
+          constraints: BoxConstraints(maxWidth: 340),
+          child: CarouselSlider(
+            carouselController: _controller,
+            options: CarouselOptions(
+                height: 290,
+                autoPlay: true,
+                aspectRatio: 2,
+                enlargeCenterPage: true,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                }),
+            items: imgList.map((e) {
+              return CardProduct(e['url'], e['valor'], e['nome']);
+            }).toList(),
+          ),
         ),
-        SizedBox(height: 5,),
+        SizedBox(
+          height: 5,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: imgList.asMap().entries.map((entry) {
