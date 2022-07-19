@@ -25,7 +25,7 @@ class MyHomePage extends StatelessWidget {
         (item) => Container(
           child: Image.network(
             item,
-            fit: BoxFit.contain,
+            fit: BoxFit.fill,
           ),
         ),
       )
@@ -33,6 +33,10 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final deviceWidth =  MediaQuery.of(context).size.width;
+    final deviceheight =  MediaQuery.of(context).size.height;
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: DrawerHome(),
@@ -41,9 +45,36 @@ class MyHomePage extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-            child: Icon(
-              Icons.shopping_cart,
-              color: Colors.black,
+            child: Center(
+              /*  alignment: Alignment.center, */
+              child: Stack(
+                children: [
+                  Align(
+                    child: Icon(
+                      Icons.shopping_cart,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 34.0,
+                    left: 10.0,
+                    child: Container(
+                        decoration: new BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.red,
+                        ),
+                        alignment: Alignment.center,
+                        width: 14,
+                        height: 14,
+                        child: Center(
+                            child: Text(
+                          '1',
+                          style: TextStyle(
+                              fontSize: 9, fontWeight: FontWeight.bold),
+                        ))),
+                  )
+                ],
+              ),
             ),
           )
         ],
@@ -90,7 +121,8 @@ class MyHomePage extends StatelessWidget {
               child: ListView(
             children: [
               Container(
-                constraints: BoxConstraints(maxHeight: 135),
+                color: Colors.grey[200],
+                alignment: Alignment.topCenter,
                 child: CarouselSlider(
                     options: CarouselOptions(
                       viewportFraction: 1,
@@ -138,7 +170,12 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
               Container(
-                child: SessionButtonCardSeriesHome(),
+                width: deviceWidth,
+                height: 130,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SessionButtonCardSeriesHome(),
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -157,6 +194,13 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBarHome(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        backgroundColor: Color.fromARGB(255, 249, 19, 3),
+        child: const Icon(Icons.chat),
+      ),
     );
   }
 }
