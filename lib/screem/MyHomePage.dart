@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'components/BottomNavigationBarHome.dart';
 import 'components/Carousel.dart';
@@ -37,169 +38,169 @@ class MyHomePage extends StatelessWidget {
     final deviceWidth =  MediaQuery.of(context).size.width;
     final deviceheight =  MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      key: _scaffoldKey,
-      drawer: DrawerHome(),
-      appBar: AppBar(
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-            child: Center(
-              /*  alignment: Alignment.center, */
-              child: Stack(
-                children: [
-                  Align(
-                    child: Icon(
-                      Icons.shopping_cart,
-                      color: Colors.black,
+    return SafeArea(
+      child: Scaffold(
+        key: _scaffoldKey,
+        drawer: DrawerHome(),
+        appBar: AppBar(
+          centerTitle: true,
+          actions: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+              child: Center(
+                /*  alignment: Alignment.center, */
+                child: Stack(
+                  children: [
+                    Align(
+                      child: Icon(
+                        Icons.shopping_cart,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: 34.0,
-                    left: 10.0,
-                    child: Container(
-                        decoration: new BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.red,
-                        ),
-                        alignment: Alignment.center,
-                        width: 14,
-                        height: 14,
-                        child: Center(
-                            child: Text(
-                          '1',
-                          style: TextStyle(
-                              fontSize: 9, fontWeight: FontWeight.bold),
-                        ))),
-                  )
-                ],
+                    Positioned(
+                      bottom: 34.0,
+                      left: 10.0,
+                      child: Container(
+                          decoration: new BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: Colors.red,
+                          ),
+                          alignment: Alignment.center,
+                          width: 14,
+                          height: 14,
+                          child: Center(
+                              child: Text(
+                            '1',
+                            style: TextStyle(
+                                fontSize: 9, fontWeight: FontWeight.bold),
+                          ))),
+                    )
+                  ],
+                ),
               ),
+            )
+          ],
+          title: Container(
+            width: 100,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Image.network(
+                  'https://d3ugyf2ht6aenh.cloudfront.net/stores/002/007/282/themes/common/logo-1512487490-1650888813-b7a11699b80f2c22ab3ebbeaf2c4950c1650888813-320-0.png?0',
+                  fit: BoxFit.scaleDown),
             ),
-          )
-        ],
-        title: Container(
-          width: 100,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Image.network(
-                'https://d3ugyf2ht6aenh.cloudfront.net/stores/002/007/282/themes/common/logo-1512487490-1650888813-b7a11699b80f2c22ab3ebbeaf2c4950c1650888813-320-0.png?0',
-                fit: BoxFit.scaleDown),
+          ),
+          leading: IconButton(
+            color: Colors.black,
+            icon: Icon(Icons.dehaze_sharp),
+            onPressed: () {
+              _scaffoldKey.currentState?.openDrawer();
+            },
           ),
         ),
-        leading: IconButton(
-          color: Colors.black,
-          icon: Icon(Icons.dehaze_sharp),
-          onPressed: () {
-            _scaffoldKey.currentState?.openDrawer();
-          },
-        ),
-      ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: TextField(
-                    maxLines: 2,
-                    minLines: 1,
-                    decoration: InputDecoration(
-                      isDense: true,
-                      labelText: "O que você está buscando?",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      suffixIcon: Icon(Icons.search),
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: TextField(
+                      maxLines: 2,
+                      minLines: 1,
+                      decoration: InputDecoration(
+                        isDense: true,
+                        labelText: "O que você está buscando?",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        suffixIcon: Icon(Icons.search),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Expanded(
+                child: ListView(
+              children: [
+                Container(
+                  color: Colors.grey[200],
+                  alignment: Alignment.topCenter,
+                  child: CarouselSlider(
+                      options: CarouselOptions(
+                        viewportFraction: 1,
+                        enlargeCenterPage: true,
+                        enableInfiniteScroll: true,
+                        initialPage: 1,
+                        autoPlay: true,
+                      ),
+                      items: imageSliders),
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
+                    child: Text(
+                      "Produto em destaque",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
-              )
-            ],
-          ),
-          Expanded(
-              child: ListView(
-            children: [
-              Container(
-                color: Colors.grey[200],
-                alignment: Alignment.topCenter,
-                child: CarouselSlider(
-                    options: CarouselOptions(
-                      viewportFraction: 1,
-                      enlargeCenterPage: true,
-                      enableInfiniteScroll: true,
-                      initialPage: 1,
-                      autoPlay: true,
+                Container(
+                  child: CarouselHome(),
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
+                    child: Text(
+                      "Linhas",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
-                    items: imageSliders),
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
-                  child: Text(
-                    "Produto em destaque",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
-              Container(
-                child: CarouselHome(),
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
-                  child: Text(
-                    "Linhas",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                Container(
+                  child: SessionButtonCard(),
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
+                    child: Text(
+                      "Series",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                child: SessionButtonCard(),
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 8, 0, 0),
-                  child: Text(
-                    "Series",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                Container(
+                  width: deviceWidth,
+                  height: 130,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SessionButtonCardSeriesHome(),
                   ),
                 ),
-              ),
-              Container(
-                width: deviceWidth,
-                height: 130,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SessionButtonCardSeriesHome(),
+                SizedBox(
+                  height: 10,
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                child: AcessoBlogDt3(),
-              ),
-              Container(
-                child: Duvidadas(),
-              ),
-              Container(
-                child: Newsletter(),
-              ),
-            ],
-          ))
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBarHome(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        backgroundColor: Color.fromARGB(255, 249, 19, 3),
-        child: const Icon(Icons.chat),
+                Container(
+                  child: AcessoBlogDt3(),
+                ),
+                Container(
+                  child: Duvidadas(),
+                ),
+                Container(
+                  child: Newsletter(),
+                ),
+              ],
+            ))
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBarHome(0),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Get.dialog(AlertDialog(content: Text("data"),) ),
+          backgroundColor: Color.fromARGB(255, 249, 19, 3),
+          child: const Icon(Icons.chat),
+        ),
       ),
     );
   }

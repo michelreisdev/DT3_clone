@@ -1,11 +1,15 @@
+import 'dart:developer';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class CardProduct extends StatelessWidget {
   String nome;
   final String preco;
   String linkProduct;
+  var favorito;
 
-  CardProduct(this.linkProduct, this.preco, this.nome, {Key? key})
+  CardProduct(this.linkProduct, this.preco, this.nome, this.favorito, {Key? key})
       : super(key: key);
 
   @override
@@ -20,12 +24,9 @@ class CardProduct extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-              
                 alignment: Alignment.topCenter,
-             /*    width: 250, */
-               /*  height: 300, */
                 child: Container(
-                    width: 220,
+                  width: 220,
                   child: AspectRatio(
                       aspectRatio: 1, child: Image.network(linkProduct)),
                 ),
@@ -36,7 +37,7 @@ class CardProduct extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: Container(
                       height: 106,
-                     /*  width: 300, */
+                      /*  width: 300, */
                       color: Color.fromARGB(190, 255, 255, 255),
                       child: Column(children: [
                         Row(
@@ -108,12 +109,14 @@ class CardProduct extends StatelessWidget {
                                 TextSpan(
                                     text: '10',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold, fontSize: 12)),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12)),
                                 TextSpan(text: 'X de'),
                                 TextSpan(
                                     text: "R\$ ${preco}",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold, fontSize: 12)),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12)),
                                 TextSpan(text: ' sem juros'),
                               ],
                             ),
@@ -126,14 +129,26 @@ class CardProduct extends StatelessWidget {
                                     text:
                                         'ou R\$1.859,91 à vista (PIX ou Boleto)',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold, fontSize: 12)),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12)),
                               ],
                             ),
                           )
                         ])
                       ])),
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Icon(
+                    favorito ? Icons.favorite_border : Icons.favorite,
+                    color: favorito ? Colors.grey[300] : Colors.red,
+                    size: 20,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

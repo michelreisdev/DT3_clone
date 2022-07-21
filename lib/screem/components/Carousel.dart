@@ -7,25 +7,29 @@ final List<Map> imgList = [
     'url':
         'https://d3ugyf2ht6aenh.cloudfront.net/stores/002/007/282/products/cadeira-gamer-dt3sports-spider-28-21-62fba6e85aaa0fe3be16458002845554-320-0.jpg',
     'valor': '1.999,90',
-    'nome': 'Spider'
+    'nome': 'Spider',
+    'favorito': false
   },
   {
     'url':
         'https://d3ugyf2ht6aenh.cloudfront.net/stores/002/007/282/products/orion-blue-21-c5379caa58ebe4c20716518574523608-320-0.jpg',
     'valor': '2.499,90',
-    'nome': 'Orion'
+    'nome': 'Orion',
+    'favorito': false
   },
   {
     'url':
         'https://d3ugyf2ht6aenh.cloudfront.net/stores/002/007/282/products/elise-grey-21-9ada5b08a72e7e4c9c16536706200480-320-0.jpg',
     'valor': '1.699,90',
-    'nome': 'Elise'
+    'nome': 'Elise',
+    'favorito': true
   },
   {
     'url':
         'https://d3ugyf2ht6aenh.cloudfront.net/stores/002/007/282/products/modena_-21-77216c07616391b61f16463317820775-480-0.jpg',
     'valor': '1.699,90',
-    'nome': 'Módena'
+    'nome': 'Módena',
+    'favorito': true
   },
 ];
 
@@ -58,7 +62,7 @@ class _CarouselHomeState extends State<CarouselHome> {
                   });
                 }),
             items: imgList.map((e) {
-              return CardProduct(e['url'], e['valor'], e['nome']);
+              return CardProduct(e['url'], e['valor'], e['nome'], e['favorito']);
             }).toList(),
           ),
         ),

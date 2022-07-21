@@ -1,7 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../search_products/search_product.dart';
 
 class BottomNavigationBarHome extends StatefulWidget {
-  const BottomNavigationBarHome({Key? key}) : super(key: key);
+  int currentIndex;
+
+  BottomNavigationBarHome(this.currentIndex, {Key? key}) : super(key: key);
 
   @override
   State<BottomNavigationBarHome> createState() =>
@@ -9,19 +16,40 @@ class BottomNavigationBarHome extends StatefulWidget {
 }
 
 class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
-  int _currentIndex = 0;
+  //int _currentIndex = widget.currentIndex;
   final _inactiveColor = Colors.grey;
   final _corFundo = Color.fromARGB(255, 249, 19, 3);
+
+ 
+
   @override
   Widget build(BuildContext context) {
+    
     return CustomAnimatedBottomBar(
     containerHeight: 40,
-    backgroundColor: Colors.white,
-    selectedIndex: _currentIndex,
+    backgroundColor: Color.fromARGB(255, 10, 10, 10),
+    selectedIndex: widget.currentIndex,
     showElevation: true,
     itemCornerRadius: 24,
     curve: Curves.easeIn,
-    onItemSelected: (index) => setState(() => _currentIndex = index),
+    onItemSelected: (index){
+      switch (index) {
+        case 0:
+          Get.offNamed('/MyHomePage', preventDuplicates: false);
+          break;
+        case 3:
+          Get.offNamed('/favoriteScreem');
+          break;
+        case 4:
+          Get.offNamed('/carrinho');
+          break;
+        default:
+      }
+      
+      setState(() {
+        widget.currentIndex = index;
+      });
+    },
     items: <BottomNavyBarItem>[
       BottomNavyBarItem(
         icon: Icon(Icons.home),
@@ -41,6 +69,15 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
         icon: Icon(Icons.search),
         title: Text(
           'Busca ',
+        ),
+        activeColor: _corFundo,
+        inactiveColor: _inactiveColor,
+        textAlign: TextAlign.center,
+      ),
+      BottomNavyBarItem(
+        icon: Icon(Icons.favorite_border),
+        title: Text(
+          'Desejos ',
         ),
         activeColor: _corFundo,
         inactiveColor: _inactiveColor,
