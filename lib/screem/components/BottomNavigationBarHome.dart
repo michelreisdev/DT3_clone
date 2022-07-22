@@ -1,9 +1,7 @@
-import 'dart:developer';
-
+import 'package:dt3/modal/RouterBody.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
-import '../search_products/search_product.dart';
 
 class BottomNavigationBarHome extends StatefulWidget {
   int currentIndex;
@@ -26,26 +24,14 @@ class _BottomNavigationBarHomeState extends State<BottomNavigationBarHome> {
   Widget build(BuildContext context) {
     
     return CustomAnimatedBottomBar(
-    containerHeight: 40,
+    containerHeight: 50,
     backgroundColor: Color.fromARGB(255, 10, 10, 10),
     selectedIndex: widget.currentIndex,
     showElevation: true,
     itemCornerRadius: 24,
     curve: Curves.easeIn,
     onItemSelected: (index){
-      switch (index) {
-        case 0:
-          Get.offNamed('/MyHomePage', preventDuplicates: false);
-          break;
-        case 3:
-          Get.offNamed('/favoriteScreem');
-          break;
-        case 4:
-          Get.offNamed('/carrinho');
-          break;
-        default:
-      }
-      
+      Provider.of<RouterBody>(context, listen: false).router(index);
       setState(() {
         widget.currentIndex = index;
       });

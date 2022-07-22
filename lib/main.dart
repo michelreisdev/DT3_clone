@@ -1,19 +1,15 @@
-import 'dart:ffi';
-
 import 'package:dt3/screem/carrinho_compras.dart/carrinho_compras.dart';
 import 'package:dt3/screem/favorite/favoriteScreem.dart';
 import 'package:dt3/screem/search_products/search_product.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:dt3/screem/MyHomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'modal/RouterBody.dart';
 import 'modal/firebasePush.dart';
 
 void main() async {
@@ -41,6 +37,10 @@ class MyApp extends StatelessWidget {
           create: (_) => FirebasePush(),
           lazy: false,
         ),
+        ChangeNotifierProvider(
+          create: (_) => RouterBody(),
+          lazy: true,
+        ),
       ],
       child: GetMaterialApp(
         useInheritedMediaQuery: true,
@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
               Theme.of(context).textTheme,
             ),
             appBarTheme: const AppBarTheme(color: Colors.white, elevation: 0)),
-        /* home: SafeArea(child: MyHomePage()), */
         initialRoute: '/',
         getPages: [
           GetPage(name: '/search_product', page: () => SearchProducts(),   fullscreenDialog: true, preventDuplicates: false,),

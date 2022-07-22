@@ -4,10 +4,8 @@ import 'package:flutter/cupertino.dart';
 class FirebasePush extends ChangeNotifier {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-  var _token;
   FirebasePush() {
     messaging.getToken().then((token) {
-      _token = token;
       print(token);
       notifyListeners();
     });

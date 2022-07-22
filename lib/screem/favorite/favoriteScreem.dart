@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../components/BottomNavigationBarHome.dart';
 
 class FavoriteScreem extends StatelessWidget {
   const FavoriteScreem({Key? key}) : super(key: key);
@@ -10,15 +8,6 @@ class FavoriteScreem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          color: Colors.black,
-          icon: Icon(Icons.close),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-      ),
       body: SafeArea(
         child: Container(
             padding: EdgeInsets.all(9),
@@ -75,7 +64,6 @@ class FavoriteScreem extends StatelessWidget {
               ],
             )),
       ),
-      bottomNavigationBar: BottomNavigationBarHome(3),
     );
   }
 }

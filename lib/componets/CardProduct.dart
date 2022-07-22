@@ -1,6 +1,3 @@
-import 'dart:developer';
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class CardProduct extends StatelessWidget {
@@ -97,7 +94,7 @@ class CardProduct extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          Text("R\$ ${preco}",
+                          Text("R\$ $preco ",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -111,13 +108,13 @@ class CardProduct extends StatelessWidget {
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 12)),
-                                TextSpan(text: 'X de'),
+                                TextSpan(text: 'x de '),
                                 TextSpan(
-                                    text: "R\$ ${preco}",
+                                    text: "R\$ $preco ",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 12)),
-                                TextSpan(text: ' sem juros'),
+                                TextSpan(text: 'sem juros'),
                               ],
                             ),
                           ),
